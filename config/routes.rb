@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   end
   resources :account_transactions, only: :index
 
+  resources :users, only: [:index, :show, :destroy]
+
 end

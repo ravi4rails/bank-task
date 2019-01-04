@@ -18,6 +18,7 @@
             <%= link_to current_user.email, "", class: "dropdown-item" %>
             <%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %>
             <% if current_user.admin? || current_user.manager? %>
+              <%= link_to "Manage Customers", users_path, class: "dropdown-item" %>
               <%= link_to "Manage Accounts", accounts_path, class: "dropdown-item" %>
               <%= link_to "All Transactions", account_transactions_path, class: "dropdown-item" %>
             <% else %>

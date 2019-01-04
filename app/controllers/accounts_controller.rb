@@ -28,6 +28,10 @@ class AccountsController < ApplicationController
 
   def show
     @transactions = @account.account_transactions
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def edit
