@@ -57,3 +57,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'cancancan'
 gem "letter_opener", :group => :development
+gem 'letter_opener_web'
