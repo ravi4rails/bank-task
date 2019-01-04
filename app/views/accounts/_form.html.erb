@@ -1,0 +1,27 @@
+<%= form_for @account do |form| %>
+
+  <div class="form-group">
+    <%= form.label :user %>
+    <%= form.select :user_id, options_for_select(customer_list, selected: @account.user_id), { prompt: "Select User"}, { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bank_name %>
+    <%= form.text_field :bank_name, class: "form-control", placeholder: "Bank Name" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :account_number %>
+    <%= form.text_field :account_number, class: "form-control", placeholder: "Account Number"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :balance %>
+    <%= form.number_field :balance, class: "form-control", placeholder: "Balance" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.submit "Save Account", class: "btn btn-primary" %>
+  </div>
+<% end %>

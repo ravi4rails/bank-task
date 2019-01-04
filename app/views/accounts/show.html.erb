@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="mt-4 mb-5">
+    <%= link_to "Withdraw Money", withdrawal_money_account_path, class: "btn btn-primary" %>
+    <%= link_to "Deposite Money", deposite_money_account_path, class: "btn btn-primary" %>
+    <%= link_to "Balance Enquiry", balance_enquiry_account_path, class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-md-9 mt-5">
+        <h4 class="text-muted">Transaction History</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Amount before transaction</th>
+              <th>Amount after transaction</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @transactions.each do |transaction| %>
+              <tr>
+                <td><%= transaction.transaction_type %></td>
+                <td>Rs: <%= transaction.before_transaction_amount %></td>
+                <td>Rs: <%= transaction.after_transaction_amount %></td>
+                <td><%= transaction.created_at.strftime("%d-%m-%Y %H:%M %p") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

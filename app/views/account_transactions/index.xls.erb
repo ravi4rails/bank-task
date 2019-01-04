@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Transaction Type</Data></Cell>
+        <Cell><Data ss:Type="String">Account Holder</Data></Cell>
+        <Cell><Data ss:Type="String">Account Number</Data></Cell>
+        <Cell><Data ss:Type="String">Available Balance</Data></Cell>
+        <Cell><Data ss:Type="String">Amount Before Transaction</Data></Cell>
+        <Cell><Data ss:Type="String">Amount After Transaction</Data></Cell>
+        <Cell><Data ss:Type="String">Performed on</Data></Cell>
+      </Row>
+    <% @account_transactions.each do |account_transaction| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= account_transaction.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.transaction_type %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.account.user.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.account.account_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.account.balance %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.before_transaction_amount %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.after_transaction_amount %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= account_transaction.created_at.strftime("%d-%b-%Y") %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

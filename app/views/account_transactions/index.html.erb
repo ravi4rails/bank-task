@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <h4 class="text-muted">Transaction History</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Account Number</th>
+            <th>Account Holder</th>
+            <th>Amount before transaction</th>
+            <th>Amount after transaction</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @account_transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.transaction_type %></td>  
+              <td><%= transaction.account.account_number %></td>
+              <td><%= transaction.account.user.name %></td>
+              <td>Rs: <%= transaction.before_transaction_amount %></td>
+              <td>Rs: <%= transaction.after_transaction_amount %></td>
+              <td><%= transaction.created_at.strftime("%d-%m-%Y %H:%M %p") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "Excel", account_transactions_path(format: "xls"), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
